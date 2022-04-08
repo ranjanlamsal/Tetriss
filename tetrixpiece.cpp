@@ -68,6 +68,7 @@ TetrixPiece TetrixPiece::rotatedLeft() const
         result.setX(i, y(i));
         result.setY(i, -x(i));
     }
+    return result;
 }
 
 TetrixPiece TetrixPiece::rotatedRight() const
@@ -81,4 +82,5 @@ TetrixPiece TetrixPiece::rotatedRight() const
         result.setX(i, -y(i));
         result.setY(i, x(i));
 }
+    return result;
 }

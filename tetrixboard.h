@@ -10,13 +10,14 @@ class TetrixBoard : public QFrame
 {
     Q_OBJECT
 public:
-    TetrixBoard(QWidget *parent = nullptr);
+    TetrixBoard(QWidget *parent = 0);
 
     void setNextPieceLabel(QLabel *label);
     QSize sizeHint() const override;
     QSize minimumSizeHint() const override;
 
 public slots:
+    void play();
     void start();
     void pause();
 

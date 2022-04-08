@@ -1,15 +1,12 @@
 #include "precompiledheader.h"
 #include "tetriswindow.h"
-#include "ui_tetriswindow.h"
-#include <QApplication>
+#include "mainWindowTetris.h"
 
-
-class TetrisWindow;
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    TetrisWindow w;
+    MainWindowTetris w;
     w.show();
     return a.exec();
 }

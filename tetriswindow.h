@@ -11,14 +11,14 @@ QT_END_NAMESPACE
 class QLCDNumber;
 class QLabel;
 class QPushButton;
+class TetrixBoard;
 
 class TetrisWindow : public QWidget
 {
     Q_OBJECT
 
 public:
-    TetrisWindow(QWidget *parent = nullptr);
-    ~TetrisWindow();
+    TetrisWindow(QWidget *parent = 0);
 
 private:
     QLabel *createLabel(const QString &text);
@@ -31,6 +31,6 @@ private:
     QPushButton *startButton;
     QPushButton *quitButton;
     QPushButton *pauseButton;
-    Ui::TetrisWindow *ui;
+    QPushButton *playButton;
 };
 #endif // TETRISWINDOW_H

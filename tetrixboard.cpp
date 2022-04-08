@@ -3,8 +3,10 @@
 
 
 TetrixBoard::TetrixBoard(QWidget *parent)
-    : QFrame(parent), isStarted(false), isPaused(false)
+    : QFrame(parent)
 {
+    isStarted = false;
+    isPaused = false;
     setFrameStyle(QFrame::Panel | QFrame::Sunken);
     setFocusPolicy(Qt::StrongFocus);
     clearBoard();
@@ -27,6 +29,19 @@ QSize TetrixBoard::minimumSizeHint() const
 {
     return QSize(BoardWidth * 5 + frameWidth() * 2,
                  BoardHeight * 5 + frameWidth() * 2);
+}
+
+void TetrixBoard::play()
+{
+    if(!isPaused)
+        return;
+    isPaused = !isPaused;
+    if (isPaused) {
+        timer.stop();
+    } else {
+        timer.start(timeoutTime(), this);
+    }
+    update();
 }
 
 void TetrixBoard::start()
@@ -70,6 +85,12 @@ void TetrixBoard::paintEvent(QPaintEvent *event)
 
     QPainter painter(this);
     QRect rect = contentsRect();
+
+    if (isPaused) {
+        painter.setPen ( Qt::white );
+        painter.drawText(rect, Qt::AlignCenter, tr("Pause"));
+        return;
+    }
 
     int boardTop = rect.bottom() - BoardHeight*squareHeight();
 
